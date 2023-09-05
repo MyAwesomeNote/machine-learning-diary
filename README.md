@@ -46,3 +46,18 @@ print(c.view(8, 1))
 print(c.view(1, 8))
 ```
 
+### Day2 - 2023-09-5
+
+- Numpy
+    - Array
+    - Indexing
+    - To Tensor
+- Pandas
+- Matplotlib
+- Car Evaluation Dataset (w. PyTorch)
+    - Data
+        - Preprocessing
+        - Visualization
+    - Model
+        - Training
+        - Evaluation
