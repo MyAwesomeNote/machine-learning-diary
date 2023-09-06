@@ -84,3 +84,9 @@ In this case, you need to use *non-linear regression*.
 > KNN, SVN, 결정트리, 선형희귀, 로지스틱 회귀
 >
 > ex) 비지도 학습이 아닌것은?
+
+- DBSCAN / PCA
+    - 밀도 기반으로 군집을 분석하고 시각화 후 하이퍼 파라미터를 변경하여 나타나는 현상 확인
+        - 하이퍼 파라미터를 큰 폭으로 변경하니 클러스터의 많은 부분이 무시됨
+    - 차원이 축소된 데이터 핸들링
+    - 범례 및 기타 matplotlib 구성
