@@ -2,6 +2,7 @@
 
 ### Day1 - 2023-09-04
 
+---
 > Already know per: 100%
 
 - Git / GitHub usage
@@ -48,6 +49,7 @@ print(c.view(1, 8))
 
 ### Day2 - 2023-09-5
 
+---
 - Numpy
     - Array
     - Indexing
@@ -61,3 +63,24 @@ print(c.view(1, 8))
     - Model
         - Training
         - Evaluation
+
+### Day3 - 2023-09-06
+
+---
+
+- Pandas
+    - DataFrame
+- Re-learn basic machine learning concepts
+- Support Vector Machine `(SVM)`
+- `Nonlinear` and `linear classification`
+- Predict number using `logistic regression`
+- About `Confusion Matrix`
+
+*Linear classification* is faster than *non-linear classification*, but if data is not linearly distributed, linear
+regression cannot be used.
+In this case, you need to use *non-linear regression*.
+
+> 키워드 :  
+> KNN, SVN, 결정트리, 선형희귀, 로지스틱 회귀
+>
+> ex) 비지도 학습이 아닌것은?
