@@ -4,3 +4,7 @@
 
 venv
 data/MNIST/*
+data/cat_and_dog/*
+!data/cat_and_dog/WHY_NOTHING_HERE.md
+
+**/*.pt

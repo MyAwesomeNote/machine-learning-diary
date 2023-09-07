@@ -134,8 +134,15 @@ In this case, you need to use *non-linear regression*.
 ### CNN, DNN 코드 코멘트
 - 'FashionMNIST'을 처리하는 CNN과 DNN 모델 작성, 각 epoch당 진행 상황 (iteraction, loss, accuracy)을 출력시켜 학습 과정을 확인.
 - CNN은 데이터가 약간만 달라져도 정확도가 떨어지기에 의미가 없음.
-- DNN은 데이터가 달라져도 정확도가 높은 편임
+- DNN은 데이터가 달라져도 정확도가 높은 편임.
 하지만 학습 데이터에 한해선 CNN과 DNN 모두 iteration이 2만까지 늘어나도 정확도는 비슷했음 (CNN 89%, DNN 90%)
+
+### 전이학습 - Transfer Learning
+
+- 미리 학습된 모델을 가져와서 사용함.
+- 데이터셋을 불러와 `전처리 -> 모델 불러오기 -> 최적화/손실 함수 선언 -> 추가 학습 -> 테스트` 과정을 거쳐 모델을 추가학습 시키는 코드를 작성함.
+- 테스트를 거쳐 예측 결과를 기반으로 손실을 계삲고 최적화 과정을 거쳐 epoch를 반복함.
+    - 최고의 정확도를 가지는 모델을 저장함.
 </details>
 
 ---
