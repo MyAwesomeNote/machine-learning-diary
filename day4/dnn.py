@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
+import torch.nn.functional as nn_func
 import torchvision
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
@@ -45,9 +45,9 @@ class FashionDNN(nn.Module):
 
     def forward(self, input_data):
         out = input_data.view(-1, 784)
-        out = F.relu(self.fc1(out))
+        out = nn_func.relu(self.fc1(out))
         out = self.drop(out)
-        out = F.relu(self.fc2(out))
+        out = nn_func.relu(self.fc2(out))
         out = self.fc3(out)
         return out
 
