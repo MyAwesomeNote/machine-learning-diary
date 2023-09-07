@@ -59,6 +59,7 @@ print(c.view(1, 8))
 
 
 ---
+### 코드 목차
 - Numpy
     - Array
     - Indexing
@@ -109,6 +110,7 @@ In this case, you need to use *non-linear regression*.
 <details>
     <summary><b>Day 4 - 2023-09-07</b></summary>
 
+### 간단 머신러닝 개념
 - 지도
     - KNN
         - 입력된 값이 훈련된 값의 집합과 인접한지 비교함
@@ -129,11 +131,10 @@ In this case, you need to use *non-linear regression*.
         - 밀도 기반의 군집화 알고리즘으로, 밀도가 높은 부분을 클러스터로 인식합니다.
     - PCA (Principal Component Analysis)
         - 다차원의 데이터를 시각화하거나 차원을 축소할 때 주로 사용되는 비지도학습 방법입니다.
-
-'FashionMNIST'을 처리하는 CNN과 DNN 모델 작성  
-각 epoch당 진행 상황 (iteraction, loss, accuracy)을 출력시켜 학습 과정을 확인  
-CNN은 데이터가 약간만 달라져도 정확도가 떨어지기에 의미가 없음  
-DNN은 데이터가 달라져도 정확도가 높은 편임  
+### CNN, DNN 코드 코멘트
+- 'FashionMNIST'을 처리하는 CNN과 DNN 모델 작성, 각 epoch당 진행 상황 (iteraction, loss, accuracy)을 출력시켜 학습 과정을 확인.
+- CNN은 데이터가 약간만 달라져도 정확도가 떨어지기에 의미가 없음.
+- DNN은 데이터가 달라져도 정확도가 높은 편임
 하지만 학습 데이터에 한해선 CNN과 DNN 모두 iteration이 2만까지 늘어나도 정확도는 비슷했음 (CNN 89%, DNN 90%)
 </details>
 
