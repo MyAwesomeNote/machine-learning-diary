@@ -1,4 +1,16 @@
-## Advanced Python(numpy, pandas, torch) and LLM study
+# The AI Study Diary
+
+## Overview
+
+"The AI Study Diary" chronicles a journey through Artificial Intelligence and Machine Learning,
+using Python and PyTorch.
+The project encompasses a variety of topics including tensor operations on GPUs,
+machine learning techniques
+like Support Vector Machines (SVM), logistic regression, PCA, DBSCAN,
+and applying these concepts in PyTorch for tasks such as image classification.
+The diary is a practical resource for anyone keen to delve into Machine Learning and AI.
+
+## Advanced Python(numpy, tensor, etc.) and basic Of LLM
 
 ---
 
@@ -52,6 +64,8 @@ print(c.view(1, 8))
 
 </details>
 
+#### Advanced Python and basic of tensor
+
 ---
 
 <details>
@@ -75,6 +89,8 @@ print(c.view(1, 8))
         - Evaluation
 
 </details>
+
+#### Handing car evaluation dataset train/eval and visualize
 
 ---
 <details>
@@ -105,6 +121,7 @@ In this case, you need to use *non-linear regression*.
 
 </details>
 
+#### SVM, Logistic Regression, Confusion Matrix
 
 ---
 <details>
@@ -145,4 +162,46 @@ In this case, you need to use *non-linear regression*.
     - 최고의 정확도를 가지는 모델을 저장함.
 </details>
 
+#### Hierarchical Clustering, DBSCAN, PCA
+
 ---
+
+
+<details>
+    <summary><b>Day 5 - 2023-09-11</b></summary>
+
+# Image classifier using pretrained ResNet models
+
+### Why is jupyter needed?
+
+- Jupyter is based on IPython (Interactive Python)
+- Basically, a once executed Python script is gone at the end of the execution.
+- Jupyter allows you to keep the output of a Python script and re-run it later. (Reside in memory)
+- Machine learning code usually takes a lot of time by one function call.
+    - So, we save the output of the functon and save the time.
+
+### Cat and dog classification using pretrained ResNet models
+
+- Loads cat and dog images from training data
+- Utilize ResNet model that has been pretrained for image classification
+- Applies transformations on the dataset for further efficiency
+- Customizes the last layer of the model to suit the two classes (cat and dog)
+- Defines a custom training function `train_model` which iterates over the dataset for a given number of epochs
+- Within `train_model`, it adjusts model weights based on calculated loss and tracks the best model state
+- Save state of the best model that can be loaded for later use
+
+### Image evaluation using saved models
+
+- After the training process, the `eval_model` function is used to evaluate the model performance on the test dataset
+- All saved models during training are loaded, and the model's prediction accuracy is evaluated
+- The model with the best accuracy is identified
+
+</details>
+
+#### Image classifier using pretrained ResNet models
+
+## License
+
+> This repository contains code samples from the
+> book [GilbutITBook](https://github.com/gilbutITbook/080289).  
+> Some of my code, including the README (which identifies me), is subject to the MIT License.
