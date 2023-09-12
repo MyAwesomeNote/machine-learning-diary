@@ -17,13 +17,6 @@ The diary is a practical resource for anyone keen to delve into Machine Learning
 <details>
     <summary><b>Day 1 - 2023-09-04</b></summary>
 
-
-> Already know all of these :(
-
-- Git / GitHub usage
-    - README.md
-        - Markdown basic syntax
-    - Edit file on GitHub
 - Object oriented programming
     - Special method
     - Extend class and `super()`
@@ -73,8 +66,6 @@ print(c.view(1, 8))
 
 
 ---
-
-### 코드 목차
 
 - Numpy
     - Array
