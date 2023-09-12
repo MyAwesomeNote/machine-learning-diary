@@ -1,6 +1,7 @@
 torch
 torchvision
 torchaudio
+torchsummary
 pandas
 numpy
 matplotlib
@@ -8,3 +9,5 @@ seaborn
 scikit-learn
 tensorflow
 opencv-python
+pillow
+tqdm

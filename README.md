@@ -1,53 +1,40 @@
 # The AI Study Diary
 
-## Overview
+## 개요
 
-"The AI Study Diary" chronicles a journey through Artificial Intelligence and Machine Learning,
-using Python and PyTorch.
-The project encompasses a variety of topics including tensor operations on GPUs,
-machine learning techniques
-like Support Vector Machines (SVM), logistic regression, PCA, DBSCAN,
-and applying these concepts in PyTorch for tasks such as image classification.
-The diary is a practical resource for anyone keen to delve into Machine Learning and AI.
+이 리포지토리는 Python과 PyTorch를 사용하여 머신러닝의 기초를 학습하며 사용한 코드와 개념을 기록합니다.
+GPU의 텐서 작업, SVM(Support Vector Machines)과 같은 기계 학습, 로지스틱 회귀, PCA, DBSCAN, 이미지 분류와 같은 작업을 위해
+PyTorch를 사용해 코드를 작성합니다. 수업 기록이므로, 목차에 대해 모든 코드가 포함되어 있지 않을 수 있습니다.
 
-## Advanced Python(numpy, tensor, etc.) and basic Of LLM
-
----
 
 <details>
     <summary><b>Day 1 - 2023-09-04</b></summary>
 
+- OOP 기본 개념
+    - 스페셜 메소드
+    - `super()` 및 클래스 상속
 
-> Already know all of these :(
-
-- Git / GitHub usage
-    - README.md
-        - Markdown basic syntax
-    - Edit file on GitHub
-- Object oriented programming
-    - Special method
-    - Extend class and `super()`
-
-#### Scala? Vector? Tensor?
+#### 스칼라? 벡터? 텐서?
 
 - Scala [x]
 - Vector [x, y]
 - Tensor [x, y, ...z]
 
-#### On GPU
+#### GPU에서의 PyTorch
 
 ```python
 import torch
 
 # !!! Before !!!
-print(torch.cuda.is_available())  # It must be True
+print(torch.cuda.is_available())  # 참이여야 합니다.
 
-ex = torch.tensor([[1, 2], [3, 4]], device="cuda:0")  # cuda:n is index of GPU
+# cuda:n 형식으로 작성합니다. n은 GPU의 인덱스 번호입니다.
+ex = torch.tensor([[1, 2], [3, 4]], device="cuda:0")
 res = ex.to("cpu").numpy()
 print(res)
 ```
 
-#### Controlling Shape
+#### Shape 조작하기
 
 ```python
 import torch
@@ -64,7 +51,7 @@ print(c.view(1, 8))
 
 </details>
 
-#### Advanced Python and basic of tensor
+#### 고급 파이썬 및 텐서
 
 ---
 
@@ -75,12 +62,12 @@ print(c.view(1, 8))
 ---
 ### 코드 목차
 - Numpy
-    - Array
-    - Indexing
-    - To Tensor
+    - 배열
+    - 인덱싱
+    - 배열을 텐서로 변환하기
 - Pandas
 - Matplotlib
-- Car Evaluation Dataset (w. PyTorch)
+- 자동차 평가 데이터 세트 (w. PyTorch)
     - Data
         - Preprocessing
         - Visualization
@@ -97,16 +84,15 @@ print(c.view(1, 8))
     <summary><b>Day 3 - 2023-09-06</b></summary>
 
 - Pandas
-    - DataFrame
-- Re-learn basic machine learning concepts
-- Support Vector Machine `(SVM)`
-- `Nonlinear` and `linear classification`
-- Predict number using `logistic regression`
-- About `Confusion Matrix`
+    - 데이터프레임
+- 기본적인 머신러닝 개념 복습하기
+- 서포트 벡터 머신 `(SVM)`
+- `비선형`과 `선형 분류`
+- `로지스틱 회귀`를 사용한 숫자 예측
+- `혼동 행렬`에 대하여
 
-*Linear classification* is faster than *non-linear classification*, but if data is not linearly distributed, linear
-regression cannot be used.
-In this case, you need to use *non-linear regression*.
+*선형 분류*는 *비선형 분류*보다 빠르지만, 만약 데이터가 선형적으로 분포되어 있지 않다면, 선형 회귀는 사용될 수 없습니다.
+이 경우, *비선형 회귀*를 사용해야만 합니다.
 
 > 키워드 :  
 > KNN, SVN, 결정트리, 선형희귀, 로지스틱 회귀
@@ -170,38 +156,59 @@ In this case, you need to use *non-linear regression*.
 <details>
     <summary><b>Day 5 - 2023-09-11</b></summary>
 
-# Image classifier using pretrained ResNet models
+# 사전훈련된 ResNet 모델을 사용하여 이미지 분류하기
 
-### Why is jupyter needed?
+### 왜 주피터가 필요한가요?
 
-- Jupyter is based on IPython (Interactive Python)
-- Basically, a once executed Python script is gone at the end of the execution.
-- Jupyter allows you to keep the output of a Python script and re-run it later. (Reside in memory)
-- Machine learning code usually takes a lot of time by one function call.
-    - So, we save the output of the functon and save the time.
+- 주피터는 IPython (Interactive Python) 기반입니다.
+- 기본적으로, 한번 실행된 파이썬 스크립트는 실행이 끝나면 사라집니다.
+- 주피터를 사용하면 파이썬 스크립트의 출력을 유지하고 나중에 다시 실행할 수 있습니다. (메모리에 유지)
+- 머신 러닝 코드는 보통 한 함수 호출로 인해 많은 시간을 소모합니다.
+    - 따라서, 함수의 출력을 저장하여 시간을 아낄 수 있게 됩니다.
 
-### Cat and dog classification using pretrained ResNet models
+### 사전 훈련된 ResNet 모델을 사용한 고양이와 개 분류
 
-- Loads cat and dog images from training data
-- Utilize ResNet model that has been pretrained for image classification
-- Applies transformations on the dataset for further efficiency
-- Customizes the last layer of the model to suit the two classes (cat and dog)
-- Defines a custom training function `train_model` which iterates over the dataset for a given number of epochs
-- Within `train_model`, it adjusts model weights based on calculated loss and tracks the best model state
-- Save state of the best model that can be loaded for later use
+- 훈련 데이터로부터 고양이와 개 이미지를 로드합니다.
+- 이미지 분류를 위해 사전 훈련된 ResNet 모델을 활용합니다.
+- 효율성을 높이기 위해 데이터셋에 변형을 적용합니다.
+- 모델의 마지막 층을 두 클래스(고양이와 개)에 맞게 커스터마이징합니다.
+- 주어진 에포크 수 동안 데이터셋을 반복하는 사용자 정의 훈련 함수 `train_model`을 정의합니다.
+- `train_model` 내에서, 계산된 손실에 기초하여 모델 가중치를 조정하고 최상의 모델 상태를 추적합니다.
+- 나중에 사용할 수 있도록 최상의 모델 상태를 저장합니다.
 
-### Image evaluation using saved models
+### 저장된 모델을 사용한 이미지 평가
 
-- After the training process, the `eval_model` function is used to evaluate the model performance on the test dataset
-- All saved models during training are loaded, and the model's prediction accuracy is evaluated
-- The model with the best accuracy is identified
+- 훈련 과정 후에는 `eval_model()` 함수를 사용하여 테스트 데이터 세트에 대한 모델 성능을 평가합니다.
+- 훈련 중에 저장된 모든 모델을 로드하고 모델의 예측 정확도를 평가합니다.
+- 정확도가 가장 높은 모델을 식별하여 저장합니다.
 
 </details>
 
-#### Image classifier using pretrained ResNet models
+#### 사전 학습된 ResNet 모델을 사용하는 이미지 분류기
+
+---
+
+<details>
+    <summary><b>Day 6 - 2023-09-12</b></summary>
+
+- 모든 이미지를 정규화하는 `ImageTransform` 유틸리티 클래스를 사용하여 사진의 크기를 일괄되게 변경하고, 학습(train)과 검증(vaild) 데이터를 분리합니다.
+    - 데이터의 방향에 과적합 되지 않도록 이미지의 절반을 뒤집어서 학습 데이터를 늘립니다.
+        - 검증 과정에선 회전이 필요 없으므로 `RandomHorizeontalFlip()`을 사용하지 않습니다.
+- 학습 데이터가 너무 많으므로 400개의 사진만 학습용으로 사용합니다.
+- 불러오는 과정에서 `os.path.join()` 함수를 사용하여 경로를 합쳐 정확하게 불러옵니다.
+- 데이터셋을 불러오는 코드 중 `cv2.cvtColor(img, cv2.COLOR_BGR2RGB)` 라는 코드는 OpenCV가 RGB가 아닌 BGR 값을 사용하기 때문에 색상을 변환하기 위한 과정입니다. (책의
+  예제에서 `cv2`로 이미지를 불러오기에 따라했지만 효율적이지 못한 방법입니다.)
+- 라벨의 이름을 학습 데이터 폴더의 하위 디렉토리 이름으로 설정합니다.
+    - 이 과정에서 운영체제에 따라 separator가 다르므로 `os.path.sep`을 사용합니다.
+        - `abel = img_path.split(path.sep)[-len(path.sep)].split('.')[0]`
+- 학습 결과, 정확도가 높진 않지만 유의미한 결과를 보여주었습니다.
+
+</details>
+
+#### 강아지와 고양이 구별하기 (LeNet)
 
 ## License
 
-> This repository contains code samples from the
-> book [GilbutITBook](https://github.com/gilbutITbook/080289).  
-> Some of my code, including the README (which identifies me), is subject to the MIT License.
+> 이 저장소는 [GilbutITBook](https://github.com/gilbutITbook/080289) 책의
+> 코드 샘플들을 포함하고 있습니다.
+> 일부 코드, README 포함 (개인을 식별하는 정보를 담고 있음)은 MIT 라이선스에 따릅니다.
