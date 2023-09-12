@@ -1,5 +1,7 @@
 # The AI Study Diary
 
+[Korean](./README.md)
+
 ## Overview
 
 "The AI Study Diary" chronicles a journey through Artificial Intelligence and Machine Learning,

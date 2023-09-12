@@ -1,5 +1,7 @@
 # The AI Study Diary
 
+[English](./README_en.md)
+
 ## 개요
 
 이 리포지토리는 Python과 PyTorch를 사용하여 머신러닝의 기초를 학습하며 사용한 코드와 개념을 기록합니다.
