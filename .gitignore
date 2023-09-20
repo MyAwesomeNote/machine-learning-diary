@@ -2,12 +2,15 @@
 .vscode
 .fleet
 
-venv
-data/MNIST/*
-data/cat_and_dog/*
-!data/cat_and_dog/WHY_NOTHING_HERE.md
-
-data/dogs-vs-cats/*
-
 **/*.pt
 **/*.pth
+
+venv
+data/MNIST/*
+data/MNIST_DATASET/*
+data/cat_and_dog/*
+data/dogs-vs-cats/*
+!data/cat_and_dog/WHY_NOTHING_HERE.md
+
+
+day7/.data/*

@@ -226,6 +226,73 @@ In this case, you need to use *non-linear regression*.
 
 #### Is cat or dog? (Image classifier using LeNet)
 
+---
+<details>
+    <summary><b>Day 7 - 2023-09-20</b></summary>
+
+Today, I will delve deeper into Recurrent Neural Network (RNN) structures by handling and training on more complex
+datasets.
+I will be exploring different RNN variants including RNN Cells, Long Short-Term Memory (LSTM), and Gated Recurrent
+Units (GRU) in PyTorch.
+
+#### RNN Cell
+
+A basic RNN cell is an
+
+- RNN that takes in an input X,
+- previous hidden state h, and gives out an output O and
+- the next hidden state h1. Here is a simple example:
+
+```python
+class BasicRNNCell(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNNCell, self).__init__()
+        self.hidden_size = hidden_size
+        self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
+        self.i2o = nn.Linear(input_size + hidden_size, output_size)
+
+    def forward(self, input_, hidden):
+        combined = torch.cat((input_, hidden), 1)
+        hidden = self.i2h(combined)
+        output = self.i2o(combined)
+        return output, hidden
+
+    def initHidden(self):
+        return torch.zeros(1, self.hidden_size)
+```
+
+#### LSTM
+
+A LSTM has a similar interface to a RNN cell, but it also involves a "cell state", which is another form of hidden state
+that gets passed from each LSTM cell to the next.
+This cell state enables the network to govern how to update and manage the state, potentially learning to "forget"
+unnecessary information and embracing the long dependencies in the data, which is not possible in traditional RNNs.
+
+```python
+lstm = nn.LSTM(input_size=input_dim, hidden_size=hidden_dim, num_layers=n_layers)  # LSTM
+linear = nn.Linear(hidden_dim, output_dim)  # Output layer
+```
+
+#### GRU
+
+GRU
+The Gated Recurrent Unit (GRU) combines the forget and input gates into a single update gate.
+It also merges the cell state and hidden state, which could potentially have a regularization effect and help prevent
+overfitting.
+
+```python
+gru = nn.GRU(input_size=input_dim, hidden_size=hidden_dim, num_layers=n_layers)  # GRU layer
+linear = nn.Linear(hidden_dim, output_dim)  # Output layer
+```
+
+It is important to note that these RNN structures can be designed and implemented in many different ways.
+The optimal choice may depend on the types of datasets and tasks at hand.
+
+
+</details>
+
+#### The Components Of Time Seris, RNN Cell, GRU and LSTM
+
 ## License
 
 > This repository contains code samples from the

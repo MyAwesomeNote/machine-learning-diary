@@ -207,23 +207,71 @@ print(c.view(1, 8))
 
 </details>
 
+#### 강아지와 고양이 구별하기 (LeNet)
+
+---
+
 <details>
     <summary>Day 7 - 20023-09-20</summary>
 
+### 개요
+오늘은 좀 더 다양한 종류의 데이터셋을 다루기 위해 순환 신경망(RNN)에 대해 학습하였습니다.  
+시계열, RNN의 기본, Long Short-Term Memory (LSTM) 그리고 Gated Recurret Units (GRU)에 대해 다룹니다.  
+
+### 시계열 문제
 - AR 모델
   - 자기 자신의 과거를 사용하여 미래를 예측하는 모델
 - MA 모델
   - 자기 자신의 과거 오차를 사용하여 미래를 예측하는 모델
 - ARMA 모델
   - AR과 MA 모델을 합친 모델
-- ARIMA 모델
+- ARIMA 모델  <-- 이걸로 예측을 진행 = ~~똥이였음~~
   - ARMA 모델에 추세를 예측하는 모델
+
+### RNN
+기본 RNN 셸은 'X', 이전 은닉 상태 'h'를 받아 '0'과 다음 은닉 상태 'h'를 출력합니다.
+```python
+class BasicRNNCell(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNNCell, self).__init__()
+        self.hidden_size = hidden_size
+        self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
+        self.i2o = nn.Linear(input_size + hidden_size, output_size)
+        
+    
+    def forward(self, input_, hidden):
+        combined = torch.cat((input_, hidden), 1)
+        hidden = self.i2h(combined)
+        output = self.i2o(combined)
+        return output, hidden
+    
+    def initHidden(self):
+        return torch.zeros(1, self.hidden_size)
+```
+
+### LSTM
+LSTM은 RNN 셸과 비슷하게 생겼지만 다음 셸로 전달되는 "셸 상태"로 다음 은닉 상태를 관리합니다.  
+기존 RNN과의 차이는 셸 상태가 네트워크가 상태를 업데이트, 관리하고 불필요한 정보를 *__잊어버릴 가능성__* 이 생깁니다.  
+
+```python
+lstm = nn.LSTM(input_size=input_dim, hidden_size=hidden_dim, num_layers=n_layers)  # LSTM
+linear = nn.Linear(hidden_dim, output_dim)  # Output layer
+```
+    
+### GRU
+Gated Recurrent Unit (GRU)는 단일 업데이트 게이트에  "forget" 게이트와 "input" 게이트를 결합하여 셸 상태와 은닉 상태를 병합하여 과적합을 방지하는 효과를 낼 수 있습니다.
+
+```python
+gru = nn.GRU(input_size=input_dim, hidden_size=hidden_dim, num_layers=n_layers)  # GRU layer
+linear = nn.Linear(hidden_dim, output_dim)  # Output layer
+```
+
+다양한 종류의 RNN 변종 방법들이 있지만 어떠한 데이터셋이 어떤 방법이 가장 적합한지는 경우에 따라 다르기에 이에 맞춰서 잘 선택하는 것이 중요합니다.
+
 
 </details>
 
-#### 시계열 부석
-
-#### 강아지와 고양이 구별하기 (LeNet)
+#### The Components Of Time Seris, RNN Cell, GRU and LSTM
 
 ## License
 

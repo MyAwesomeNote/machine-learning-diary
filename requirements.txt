@@ -1,4 +1,4 @@
-torch
+torch==2.0.1+cu11
 torchvision
 torchaudio
 torchsummary
@@ -12,3 +12,6 @@ opencv-python
 pillow
 tqdm
 statsmodels
+
+# for day 7 rnn-text (book is too old)
+torchtext==0.6.0
