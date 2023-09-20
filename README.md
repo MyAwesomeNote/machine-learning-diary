@@ -207,6 +207,22 @@ print(c.view(1, 8))
 
 </details>
 
+<details>
+    <summary>Day 7 - 20023-09-20</summary>
+
+- AR 모델
+  - 자기 자신의 과거를 사용하여 미래를 예측하는 모델
+- MA 모델
+  - 자기 자신의 과거 오차를 사용하여 미래를 예측하는 모델
+- ARMA 모델
+  - AR과 MA 모델을 합친 모델
+- ARIMA 모델
+  - ARMA 모델에 추세를 예측하는 모델
+
+</details>
+
+#### 시계열 부석
+
 #### 강아지와 고양이 구별하기 (LeNet)
 
 ## License
