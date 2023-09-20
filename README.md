@@ -212,7 +212,7 @@ print(c.view(1, 8))
 ---
 
 <details>
-    <summary>Day 7 - 20023-09-20</summary>
+    <summary><b>Day 7 - 2023-09-20</b></summary>
 
 ### 개요
 오늘은 좀 더 다양한 종류의 데이터셋을 다루기 위해 순환 신경망(RNN)에 대해 학습하였습니다.  
