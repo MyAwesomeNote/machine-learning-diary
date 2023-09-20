@@ -11,3 +11,4 @@ tensorflow
 opencv-python
 pillow
 tqdm
+statsmodels
