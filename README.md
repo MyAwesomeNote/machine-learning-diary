@@ -53,7 +53,7 @@ print(c.view(1, 8))
 
 </details>
 
-#### 고급 파이썬 및 텐서
+#### Advanced Python and Tensor
 
 ---
 
@@ -186,7 +186,7 @@ print(c.view(1, 8))
 
 </details>
 
-#### 사전 학습된 ResNet 모델을 사용하는 이미지 분류기
+#### Image Classification Using Pretrained ResNet Model
 
 ---
 
@@ -207,7 +207,7 @@ print(c.view(1, 8))
 
 </details>
 
-#### 강아지와 고양이 구별하기 (LeNet)
+#### Is it a cat or a dog? (ResNet)
 
 ---
 
@@ -272,6 +272,37 @@ linear = nn.Linear(hidden_dim, output_dim)  # Output layer
 </details>
 
 #### The Components Of Time Seris, RNN Cell, GRU and LSTM
+
+---
+
+<details>
+<summary><b>Day 8 - 2023-09-22</b></summary>
+
+
+오늘은 GRU (Gated Recurrent Unit)와 BiLSTM (Bidirectional Long Short-Term Memory)에 대해 알아보았습니다.  
+GRU는 기본적으로 LSTM의 단순화 버전으로, 정확도는 약간 낮지만 컴퓨팅 비용이 더 적은 모델입니다.   
+BiLSTM(양방향 RNN 이라고도 함)는 정보를 두 가지 방향(과거와 미래)에서 수집하여 시퀀스의 각 지점에서 더 많은 컨텍스트를 제공해 LSTM의 성능을 향상시킵니다.
+
+### GRU 구현
+
+GRU는 LSTM의 변형으로, 복잡성을 줄이고 계산 효율성을 향상시키기 위해 게이트의 수를 줄였습니다.   
+데이터셋에 대해 꽤 높은 정확도를 확인할 수 있었습니다.
+
+### BiLSTM 구현
+
+BiLSTM은 기본 LSTM 구조를 개선한 모델로, 맥락의 가중치를 두 개의 방향(과거와 미래)에 걸쳐 분배하는 능력을 가지고 있습니다.
+하지만 BiLSTM의 경우에는 데이터셋이 대해 적합하지 않아(과거와 미래에 대한 영향이 없거나 적음), 낮은 정확도를 보였습니다.
+
+### 결론
+
+- GRU는 LSTM보다 더 적은 계산 비용으로 비슷한 정확도를 제공합니다.
+- BiLSTM은 시간에 대해 유의미한 결과를 가지는 데이터셋애 대해 더 적합합니다.
+
+</details>
+
+#### GRU and BiLSTM
+
+---
 
 ## License
 
