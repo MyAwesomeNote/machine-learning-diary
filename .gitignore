@@ -11,6 +11,6 @@ data/MNIST_DATASET/*
 data/cat_and_dog/*
 data/dogs-vs-cats/*
 !data/cat_and_dog/WHY_NOTHING_HERE.md
-
+data/isdog/*
 
 day7/.data/*

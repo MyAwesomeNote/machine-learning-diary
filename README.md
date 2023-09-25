@@ -343,6 +343,61 @@ CPU는 순차적 연산에 강점을 가지지만, 복잡한 역전파 같은 �
 
 ---
 
+<details>
+    <summary><b>Day 9 - 2023-09-25</b></summary>
+
+오늘은 early-stopping과 learning rate scheduling에 대해 알아봤습니다.
+
+- **Early Stopping:** 딥러닝에서 early stopping은 오버핏팅을 방지하기 위한 방법 중 하나입니다.
+    - validation loss가 개선되지 않는다고 판단되면 학습을 중단하고 가장 낮은 loss를 가진 파라미터를 유지하기 위해 사용합니다.
+
+```python
+class EarlyStopping():
+    def __init__(self, patience=5, verbose=True, delta=0, path='ckpt.pt'):
+
+    # ...
+    def __call__(self, val_loss, model):
+
+    # ...
+    def save_ckpt(self, val_loss, model):
+# ...
+```
+
+Resnet50에서 아래와 같이 통합시켰습니다.
+
+```python
+early_stopping = EarlyStopping()
+for epoch in range(n_epochs):
+    # ...
+    # training and validation happen here
+    # ...
+    early_stopping(val_loss, model)
+    if early_stopping.early_stop:
+        print('Early stopping')
+        break
+```
+
+- **Learning Rate Scheduling:** 학습 속도를 동적으로 조절하기 위해 사용합니다.
+    - PyTorch에서는 이를 위해 torch.optim.lr_scheduler를 사용합니다.
+    - 이번 경우에선 ReduceLR0nPlateau를 사용했는데, 이것은 validation loss가 개선되지 않는 경우 학습률을 조정합니다.
+
+```python
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min')
+for epoch in range(n_epochs):
+    # ...
+    # training and validation happen here
+    # ...
+    scheduler.step(val_loss)
+```
+
+확실히 early-stopping 또는 LR Scheduling 중 어느 하나만 사용하는 것 보단 함께 사용하는게 더 좋은 결과를 보여줍니다.
+
+</details>
+
+#### Early Stopping and Learning Rate Scheduling (w. ResNet50)
+
+---
+
 ## License
 
 > 이 저장소는 [GilbutITBook](https://github.com/gilbutITbook/080289) 책의
