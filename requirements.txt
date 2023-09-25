@@ -17,3 +17,7 @@ statsmodels
 # torchtext==0.6.0
 torchtext
 
+konlpy
+transformers
+gensim
+nltk

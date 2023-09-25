@@ -5,6 +5,9 @@
 **/*.pt
 **/*.pth
 
+**/*.nlp
+**/*.model
+
 venv
 data/MNIST/*
 data/MNIST_DATASET/*

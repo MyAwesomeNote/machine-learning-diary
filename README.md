@@ -398,6 +398,52 @@ for epoch in range(n_epochs):
 
 ---
 
+<details>
+    <summary><b>Day 10 - 2023-09-25</b></summary>
+
+### 관련 용어
+
+- **말뭉치 (Corpus):** 자연어 처리 모델을 학습 시키기 위한 데이터 표본을 추출한 집합
+- **토큰 (Token):** 자연어 처리를 위해 데이터를 작은 단위로 나눈 단위
+    - **토큰화 (Tokenization):** 텍스트를 문장, 단어로 분리하는 것을 의미하며, 이 단계를 거치면 텍스트가 단어 단위로 분리됨
+- **불용어 (Stopword):** 자연어 처리를 위해 무시할 수 있는 단어
+    - "a", "the", "she", "he" 너무 자주 등장하는 빈도로 인해 성능에 영향을 미치기에 미리 제거하는 전처리 과정을 거침
+- **어간 추출 (Stemming):** 단어의 어간을 추출하는 과정
+    - "learning" -> "learn", "learned" -> "learn"
+- **품사 태깅 (part-of-speech tagging):** 단어의 품사를 태깅하는 과정
+    - 이 과정을 위해 NLTK 라이브러리를 사용합니다.
+
+```mermaid
+graph LR
+    I["I (PRP)"] --> am["am (VBP)"]
+    am --> a["a (DT)"]
+    a --> student["student (NN)"]
+```
+
+### [KoNLPy](https://github.com/konlpy/konlpy)
+
+[NoNLPy](https://github.com/konlpy/konlpy는 한국어 처리를 위한 파이썬 라이브러리인데,
+기존에 공개된 Twitter, Mecab, Hannanum 등을 포함하고 일관된 사용 경험을 제공하는 오픈소스 라이브러리입니다.
+
+JDK가 설치되어 있어야 하며, `JAVA_HOME` 환경 변수가 필요합니다.  
+`/path/to/jdk/bin/server`를 `JAVA_HOME`으로 지정하여야 합니다.
+
+#### NLTK IPYNB
+
+오늘 노트북은 다음과 같은 순서로 데이터를 전처리 합니다.
+
+- 문장을 토큰화합니다.
+    - `nltk`의 기본 tokenizer, WordPunctTokenizer 그리고 transformers의 AutoTokenizer와 비교합니다.
+- twitter로 csv 데이터를 전처리합니다.
+    - 이 과정에서 불용어를 제거합니다.
+- 간단하게 학습을 진행하기 위해 학습 데이터셋과 테스트 데이터셋으로 나누고 표준화 합니다.
+
+</details>
+
+#### Basic Of Natural Language Processing (NLP)
+
+---
+
 ## License
 
 > 이 저장소는 [GilbutITBook](https://github.com/gilbutITbook/080289) 책의
