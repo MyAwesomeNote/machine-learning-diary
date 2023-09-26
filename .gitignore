@@ -16,4 +16,6 @@ data/dogs-vs-cats/*
 !data/cat_and_dog/WHY_NOTHING_HERE.md
 data/isdog/*
 
+data/nlp/glove.6B.100d.txt
+
 day7/.data/*

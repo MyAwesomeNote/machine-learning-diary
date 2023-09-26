@@ -21,3 +21,4 @@ konlpy
 transformers
 gensim
 nltk
+keras
