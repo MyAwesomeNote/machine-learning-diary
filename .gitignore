@@ -8,6 +8,8 @@
 **/*.nlp
 **/*.model
 
+**/*.tmp.*
+
 venv
 data/MNIST/*
 data/MNIST_DATASET/*

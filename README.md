@@ -477,8 +477,57 @@ Seq2Seq 모델은 비교적 단순한 챗봇 구현부터 복잡한 기계번역
 
 ---
 
+<details>
+    <summary><b>Day 12 - 2023-09-27</b></summary>
+
+### BERT 추가학습  
+PyTorch-Transformers 라이브러리에 포함된 사전 학습 모델을 사용하여 다음과 같은 과정을 진행합니다:
+
+- 모든 에포크당 훈련 데이터셋과 검증 데이터셋을 반복합니다.
+- 텍스트를 BERT 토크나이저로 인코딩하고 결과를 모델에 적용합니다.
+- 모델의 출력을 사용하여 Loss를 계산 후, 이를 backprogration을 통해 gradient를 계산하는데 사용합니다.
+- Optimizer를 사용하여 weight를 업데이트 합니다.
+- 학습 시간이 매우 긴 편이므로, 자주 체크포인트를 저장합니다.
+- 저장과 함께 Loss를 계산합니다.
+
+이제 이 함수를 사용해 모델을 훈련할 수 있습니다. 후에는 모델을 로드하고, 테스트 데이터셋에 대한 예측을 생성 및 평가합니다.
+
+### BERT 임베딩
+`bert-base-multilingual-cased`를 사용하여 한국어 데이터의 4개의 레이어를 생성하고 하나로 합쳐 문맥에 따른 코사인 유사도를 분석하였습니다.  
+```python
+text = "과수원에 사과가 많았다." \
+       "친구가 나에게 사과했다." \
+       "백설공주는 독이 든 사과를 먹었다."
+       
+tokenized_text = tokenizer.tokenize(marked_text)
+indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
+segments_ids = [1] * len(tokenized_text)
+tokens_tensor = torch.tensor([indexed_tokens])
+segments_tensors = torch.tensor([segments_ids])
+
+with torch.no_grad():
+    outputs = model(tokens_tensor, segments_tensors)
+    hidden_states = outputs[2]
+```
+
+
+##### 코사인 유사도 분석
+```python
+same_apple = 1 - cosine(token_vecs_sum[5], token_vecs_sum[16])
+diff_apple = 1 - cosine(token_vecs_sum[5], token_vecs_sum[27])
+```
+
+이 결과로 BERT가 문맥을 파악하는데 얼마나 유용한지 확인할 수 있었습니다.
+
+
+</details>
+
+#### Text Classification with BERT-Based Model
+
+---
+
 ## License
 
 > 이 저장소는 [GilbutITBook](https://github.com/gilbutITbook/080289) 책의
 > 코드 샘플들을 포함하고 있습니다.
-> 일부 코드, README 포함 (개인을 식별하는 정보를 담고 있음)은 MIT 라이선스에 따릅니다.
+> 일부 코드 및 [README](./README.md)(개인을 식별할 수 있는 정보를 포함하고 있음)는 MIT 라이센스에 따릅니다.
